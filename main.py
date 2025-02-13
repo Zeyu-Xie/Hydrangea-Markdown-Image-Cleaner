@@ -11,10 +11,9 @@ project_path = sys.argv[1]
 try:
     project_path = os.path.realpath(project_path)
     markdown_file_list = []
-    for root, dirs, files in os.walk(project_path):
-        for file in files:
-            if file.endswith(".md"):
-                markdown_file_list.append(os.path.join(root, file))
+    for file in os.listdir(project_path):
+        if file.endswith(".md"):
+            markdown_file_list.append(os.path.join(project_path, file))
 except Exception as e:
     print("Error: " + str(e))
     sys.exit(1)
